@@ -1,0 +1,23 @@
+time="2026-05-12T09:14:13-07:00" level=warning msg="/home/jcdu2023/twitter_postgres_indexes/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+sql.denormalized/01.sql canceled
+Command exited with non-zero status 130
+0.08user 0.04system 0:51.99elapsed 0%CPU (0avgtext+0avgdata 42240maxresident)k
+0inputs+16outputs (0major+8862minor)pagefaults 0swaps
+time="2026-05-12T09:15:19-07:00" level=warning msg="/home/jcdu2023/twitter_postgres_indexes/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+SET
+SET
+psql:/tmp/db/services/pg_denormalized/schema-indexes.sql:4: ERROR:  out of memory
+DETAIL:  Failed on request of size 131072 in memory context "Gin build temporary context".
+psql:/tmp/db/services/pg_denormalized/schema-indexes.sql:5: NOTICE:  word is too long to be indexed
+DETAIL:  Words longer than 2047 characters are ignored.
+CREATE INDEX
+CREATE INDEX
+time="2026-05-12T13:04:33-07:00" level=warning msg="/home/jcdu2023/twitter_postgres_indexes/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+SET
+SET
+CREATE INDEX
+CREATE INDEX
+psql:/tmp/db/services/pg_denormalized/schema-indexes.sql:6: NOTICE:  word is too long to be indexed
+DETAIL:  Words longer than 2047 characters are ignored.
+CREATE INDEX
+CREATE INDEX
