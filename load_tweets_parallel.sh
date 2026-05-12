@@ -15,7 +15,7 @@ files='/data/tweets/geoTwitter21-01-01.zip
 echo '================================================================================'
 echo 'load pg_denormalized'
 echo '================================================================================'
-time sh -c 'ls data/* | parallel sh load_denormalized.sh {}'
+echo "$files" | time parallel sh load_denormalized.sh {}
 
 # NOTE:
 # I have removed the pg_normalized code from this repo.
@@ -26,4 +26,4 @@ time sh -c 'ls data/* | parallel sh load_denormalized.sh {}'
 echo '================================================================================'
 echo 'load pg_normalized_batch'
 echo '================================================================================'
-time sh -c 'ls data/* | parallel python3 -u load_tweets_batch.py --db=postgresql://postgres:pass@localhost:3079/postgres --inputs={}'
+echo "$files" | time parallel python3 -u load_tweets_batch.py --db=postgresql://postgres:pass@localhost:3079/ --inputs {}
