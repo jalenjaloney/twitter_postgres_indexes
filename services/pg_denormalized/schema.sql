@@ -14,6 +14,15 @@ CREATE TABLE tweets_jsonb (
 -- the views below represent normalized tables
 --------------------------------------------------------------------------------    
 
+/*
+    -> returns a JSONB object always what to do on the "left" queries
+
+    ->> does a type conversion from JSONB to whatever is needed in the query (uses "type inference")
+    normally last index op is ->>
+
+    operations that only use -> or ->> can be sped up with btrees
+*/
+
 CREATE VIEW tweets AS (
     SELECT 
         data->>'id' AS id_tweets, 
@@ -43,6 +52,9 @@ CREATE VIEW tweet_mentions AS (
     FROM (
         SELECT
             data->>'id' AS id_tweets,
+            -- jsonb_array_elements
+            -- "set returning function" a funciton that "internally does a join"
+            -- "set returning functions" cannot be sped up with an index
             jsonb_array_elements(
                 COALESCE(data->'entities'->'user_mentions','[]') ||
                 COALESCE(data->'extended_tweet'->'entities'->'user_mentions','[]')
